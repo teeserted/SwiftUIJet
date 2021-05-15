@@ -14,6 +14,7 @@
 		9F5F80C5264FBC2C002E31E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F80C4264FBC2C002E31E1 /* ContentView.swift */; };
 		9F5F80C7264FBC2D002E31E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F5F80C6264FBC2D002E31E1 /* Assets.xcassets */; };
 		9F5F80CA264FBC2D002E31E1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F5F80C9264FBC2D002E31E1 /* Preview Assets.xcassets */; };
+		9F5F80D9264FC2A1002E31E1 /* SwiftUIJet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F80D8264FC2A1002E31E1 /* SwiftUIJet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		9F5F80C6264FBC2D002E31E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F5F80C9264FBC2D002E31E1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9F5F80CB264FBC2D002E31E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F5F80D8264FC2A1002E31E1 /* SwiftUIJet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIJet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				9F5F8066264FBB46002E31E1 /* SwiftUIJet.h */,
 				9F5F8067264FBB46002E31E1 /* Info.plist */,
+				9F5F80D8264FC2A1002E31E1 /* SwiftUIJet.swift */,
 			);
 			path = SwiftUIJet;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				TargetAttributes = {
 					9F5F8062264FBB46002E31E1 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					9F5F806B264FBB46002E31E1 = {
 						CreatedOnToolsVersion = 12.4;
@@ -263,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5F80D9264FC2A1002E31E1 /* SwiftUIJet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +423,7 @@
 		9F5F8078264FBB46002E31E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -435,6 +441,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teeserted.SwiftUIJet;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -442,6 +449,7 @@
 		9F5F8079264FBB46002E31E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -466,6 +474,7 @@
 		9F5F807B264FBB46002E31E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 66246453ZT;
@@ -484,6 +493,7 @@
 		9F5F807C264FBB46002E31E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 66246453ZT;
