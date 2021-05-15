@@ -18,7 +18,14 @@ struct ContentView: View {
             Text("Text Badge")
                 .badge(text: "!!")
             
-            JetBadge(text: "Custom font", padding: 30, font: .title)
+            JetBadge(text: "Custom font", padding: 20, font: .title)
+            JetBadge(padding: 10, backgroundColor: .blue) {
+                HStack(spacing: 0) {
+                    Image(systemName: "square.and.arrow.up")
+                    Text("With custom content")
+                }
+                .foregroundColor(.white)
+            }
         }
     }
 }

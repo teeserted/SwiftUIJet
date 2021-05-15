@@ -7,39 +7,56 @@
 
 import SwiftUI
 
-public struct JetBadge: View {
-    var color: Color = .red
+public struct JetBadge<Content: View>: View {
+    var backgroundColor: Color = .red
     var textColor: Color = .white
-    var text: String
-    var padding: CGFloat
-    var font: Font
+    var text: String = ""
+    var padding: CGFloat = 3
+    var font: Font = .footnote
+    var content: Content
     
+    public init(padding: CGFloat = 3, backgroundColor: Color = .red, @ViewBuilder contentBuilder: () -> Content) {
+        self.padding = padding
+        self.backgroundColor = backgroundColor
+        self.content = contentBuilder()
+    }
+    
+    public var body: some View {
+        content
+            .padding(padding)
+            .frame(minWidth: 24, minHeight: 24)
+            .background(backgroundColor)
+            .clipShape(Capsule())
+    }
+}
+
+extension JetBadge where Content == Text {
     public init(text: String?,
-                color: Color = .red,
+                backgroundColor: Color = .red,
                 textColor: Color = .white,
                 padding: CGFloat = 3,
                 font: Font = .footnote)  {
-        self.color = color
+        
+        self.init() {
+            Text(text ?? "")
+                .font(font)
+                .foregroundColor(textColor)
+        }
+        
+        self.backgroundColor = backgroundColor
         self.text = text ?? ""
         self.textColor = textColor
         self.padding = padding
         self.font = font
-    }
-    
-    public var body: some View {
-        Text(text)
-            .font(font)
-            .foregroundColor(textColor)
-            .padding(padding)
-            .frame(minWidth: 24, minHeight: 24)
-            .background(color)
-            .clipShape(Capsule())
     }
 }
 
 struct JetBadge_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
+            JetBadge {
+                Text("Custom content")
+            }
             JetBadge(text: "Just badge")
             JetBadge(text: "With padding", padding: 10)
             Text("Default / top trailing").badge(count: 5)
@@ -48,19 +65,19 @@ struct JetBadge_Previews: PreviewProvider {
             Text("Bottom trailing").badge(count: 5, alignment: .bottomTrailing)
             Text("Center").badge(count: 5, alignment: .center)
             Text("TopCenter").badge(count: 5, alignment: .top)
-            Text("BottomCenter").badge(count: 5, alignment: .bottom)
+            Text("BottomCenter").badge(count: 5, color: .blue, alignment: .bottom)
         }
     }
 }
 
 public extension View {
-    func badge(count: Int = 0, alignment: Alignment = .topTrailing) -> some View {
+    func badge(count: Int = 0, color: Color = .red, alignment: Alignment = .topTrailing) -> some View {
         let offset = calcBadgePosition(alignement: alignment)
         return ZStack(alignment: alignment) {
             self
             ZStack {
                 if count != 0 {
-                    JetBadge(text: "\(count)")
+                    JetBadge(text: "\(count)", backgroundColor: color)
                         .animation(nil)
                         .transition(.scale)
                 }
@@ -69,12 +86,12 @@ public extension View {
         }
     }
     
-    func badge(text: String, alignment: Alignment = .topTrailing) -> some View {
+    func badge(text: String, color: Color = .red, alignment: Alignment = .topTrailing) -> some View {
         let offset = calcBadgePosition(alignement: alignment)
         return ZStack(alignment: alignment) {
             self
             ZStack {
-                JetBadge(text: text)
+                JetBadge(text: text, backgroundColor: color)
                     .animation(nil)
                     .transition(.scale)
             }
