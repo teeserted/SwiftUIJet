@@ -17,6 +17,8 @@ struct ContentView: View {
             
             Text("Text Badge")
                 .badge(text: "!!")
+            
+            JetBadge(text: "Custom font", padding: 30, font: .title)
         }
     }
 }

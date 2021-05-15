@@ -12,17 +12,23 @@ public struct JetBadge: View {
     var textColor: Color = .white
     var text: String
     var padding: CGFloat
+    var font: Font
     
-    public init(text: String?, color: Color = .red, textColor: Color = .white, padding: CGFloat = 3) {
+    public init(text: String?,
+                color: Color = .red,
+                textColor: Color = .white,
+                padding: CGFloat = 3,
+                font: Font = .footnote)  {
         self.color = color
         self.text = text ?? ""
         self.textColor = textColor
         self.padding = padding
+        self.font = font
     }
     
     public var body: some View {
         Text(text)
-            .font(.footnote)
+            .font(font)
             .foregroundColor(textColor)
             .padding(padding)
             .frame(minWidth: 24, minHeight: 24)
