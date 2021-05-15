@@ -16,8 +16,8 @@
 		9F5F8199264FC85B002E31E1 /* SwiftUIJet.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F5F818B264FC85B002E31E1 /* SwiftUIJet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F5F81A8264FC894002E31E1 /* SwiftUIJet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5F8189264FC85A002E31E1 /* SwiftUIJet.framework */; };
 		9F5F81A9264FC894002E31E1 /* SwiftUIJet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5F8189264FC85A002E31E1 /* SwiftUIJet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9F5F81B0264FC8A2002E31E1 /* JetTestComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F81AF264FC8A2002E31E1 /* JetTestComponent.swift */; };
 		9F5F81B9264FC9E9002E31E1 /* SwiftUIJet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5F8189264FC85A002E31E1 /* SwiftUIJet.framework */; };
+		9F5F81C4264FD31B002E31E1 /* JetBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F81C3264FD31B002E31E1 /* JetBadge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9F4E50DD2650089D0016DD04 /* SwiftUIJet.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftUIJet.podspec; sourceTree = "<group>"; };
 		9F5F80C0264FBC2C002E31E1 /* SwiftUIJetExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIJetExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F5F80C2264FBC2C002E31E1 /* SwiftUIJetExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIJetExampleApp.swift; sourceTree = "<group>"; };
 		9F5F80C4264FBC2C002E31E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,7 +72,7 @@
 		9F5F8191264FC85B002E31E1 /* SwiftUIJetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIJetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F5F8196264FC85B002E31E1 /* SwiftUIJetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIJetTests.swift; sourceTree = "<group>"; };
 		9F5F8198264FC85B002E31E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9F5F81AF264FC8A2002E31E1 /* JetTestComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JetTestComponent.swift; sourceTree = "<group>"; };
+		9F5F81C3264FD31B002E31E1 /* JetBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JetBadge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +106,7 @@
 		9F5F8059264FBB46002E31E1 = {
 			isa = PBXGroup;
 			children = (
+				9F4E50DD2650089D0016DD04 /* SwiftUIJet.podspec */,
 				9F5F80C1264FBC2C002E31E1 /* SwiftUIJetExample */,
 				9F5F818A264FC85B002E31E1 /* SwiftUIJet */,
 				9F5F8195264FC85B002E31E1 /* SwiftUIJetTests */,
@@ -146,9 +148,9 @@
 		9F5F818A264FC85B002E31E1 /* SwiftUIJet */ = {
 			isa = PBXGroup;
 			children = (
+				9F5F81C2264FD2CB002E31E1 /* Components */,
 				9F5F818B264FC85B002E31E1 /* SwiftUIJet.h */,
 				9F5F818C264FC85B002E31E1 /* Info.plist */,
-				9F5F81AF264FC8A2002E31E1 /* JetTestComponent.swift */,
 			);
 			path = SwiftUIJet;
 			sourceTree = "<group>";
@@ -167,6 +169,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F5F81C2264FD2CB002E31E1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9F5F81C3264FD31B002E31E1 /* JetBadge.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,7 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F5F81B0264FC8A2002E31E1 /* JetTestComponent.swift in Sources */,
+				9F5F81C4264FD31B002E31E1 /* JetBadge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +495,7 @@
 				DEVELOPMENT_TEAM = 9MRGVEWUH8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIJetExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,7 +519,7 @@
 				DEVELOPMENT_TEAM = 9MRGVEWUH8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIJetExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,7 +545,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftUIJet/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -563,7 +573,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftUIJet/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

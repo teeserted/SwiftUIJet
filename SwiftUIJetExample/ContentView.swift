@@ -10,7 +10,14 @@ import SwiftUIJet
 
 struct ContentView: View {
     var body: some View {
-        JetTestComponent()
+        VStack {
+            Text("Hello world")
+                .padding()
+                .badge(count: 5)
+            
+            Text("Text Badge")
+                .badge(text: "!!")
+        }
     }
 }
 
