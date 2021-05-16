@@ -9,24 +9,16 @@ import SwiftUI
 import SwiftUIJet
 
 struct ContentView: View {
+    let testData = [
+        JetAccordionItem(title: "Header 1", content: "Content 1"),
+        JetAccordionItem(title: "Header 2", content: "Content 2")
+    ]
     var body: some View {
         VStack {
-            Text("Hello world")
-                .padding()
-                .badge(count: 5)
-            
-            Text("Text Badge")
-                .badge(text: "!!")
-            
-            JetBadge(text: "Custom font", padding: 20, font: .title)
-            JetBadge(padding: 10, backgroundColor: .blue) {
-                HStack(spacing: 0) {
-                    Image(systemName: "square.and.arrow.up")
-                    Text("With custom content")
-                }
-                .foregroundColor(.white)
-            }
+            JetAccordion(data: testData)
+            Spacer()
         }
+        .padding()
     }
 }
 
