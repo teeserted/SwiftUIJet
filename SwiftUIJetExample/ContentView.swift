@@ -15,7 +15,24 @@ struct ContentView: View {
     ]
     var body: some View {
         VStack {
-            JetAccordion(data: testData)
+            JetAccordion(data: testData, body: { item, isExpanded in
+                VStack {
+                    HStack {
+                        Spacer()
+                    }
+                    Text("Custom content \(item.content)")
+                }
+                .background(Color.red)
+                .padding()
+            })
+            Spacer()
+            JetAccordion(data: testData, header: { item, isExpanded in
+                HStack {
+                    Image(systemName: isExpanded ? "pencil" : "scribble.variable")
+                    Text("Custom content \(item.content)")
+                    Spacer()
+                }
+            })
             Spacer()
         }
         .padding()
