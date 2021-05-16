@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
   spec.name         = "SwiftUIJet"
-  spec.version      = "0.0.3"
+  spec.version      = "0.0.4"
   spec.summary      = "SwiftUI components library"
-  spec.homepage     = "http://teeserted.com"
+  spec.homepage     = "https://github.com/teeserted/SwiftUIJet"
   spec.license      = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
   spec.author             = { "vellovaherpuu" => "vello@teeserted.com" }
 
