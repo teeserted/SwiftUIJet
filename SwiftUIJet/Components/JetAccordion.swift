@@ -39,7 +39,11 @@ public struct JetAccordion<HeaderContent: View, BodyContent: View>: View {
             ForEach(data, id: \.id) { item in
                 VStack {
                     header(item)
+                    Divider()
                     body(item)
+                    if (isExpanded(item)) {
+                        Divider()
+                    }
                 }
             }
         }
@@ -78,25 +82,36 @@ public struct JetAccordion<HeaderContent: View, BodyContent: View>: View {
         }
         .frame(minWidth: 0, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: contentMaxHeight)
         .clipped()
-        .animation(.easeOut)
-        .transition(.slide)
     }
     
     private func defaultHeader(_ item: JetAccordionItem, _ isExpanded: Bool) -> some View {
-        var iconName: String {
-            isExpanded ? "chevron.up" : "chevron.down"
+        var rotation: Angle {
+            let r: Double = isExpanded ? 180 : 0
+            return Angle(degrees: r)
         }
+        
         return HStack {
             Text(item.title)
+                .font(.headline)
             Spacer()
-            Image(systemName: iconName)
+            Image(systemName: "chevron.down")
+                .rotationEffect(rotation)
+                .animation(.linear)
         }
+        .padding()
         .padding(.bottom, 1)
         .background(Color.white.opacity(0.01))
     }
     
     private func defaultBody(_ item: JetAccordionItem,_ expanded: Bool) -> some View {
-        Text(item.content)
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Spacer()
+            }
+            Text(item.content)
+                .font(.body)
+        }
+        .padding()
     }
     
     private func isExpanded(_ item: JetAccordionItem) -> Bool {
@@ -104,11 +119,13 @@ public struct JetAccordion<HeaderContent: View, BodyContent: View>: View {
     }
     
     private func headerTapped(_ item: JetAccordionItem) {
-        if expandedViewId == item.id {
-            expandedViewId = nil
-            return
+        withAnimation(.easeOut) {
+            if expandedViewId == item.id {
+                expandedViewId = nil
+                return
+            }
+            expandedViewId = item.id
         }
-        expandedViewId = item.id
     }
 }
 

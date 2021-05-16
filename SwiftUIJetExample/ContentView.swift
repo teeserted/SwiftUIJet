@@ -15,6 +15,7 @@ struct ContentView: View {
     ]
     var body: some View {
         VStack {
+            JetAccordion(data: testData)
             JetAccordion(data: testData, body: { item, isExpanded in
                 VStack {
                     HStack {
@@ -32,6 +33,7 @@ struct ContentView: View {
                     Text("Custom content \(item.content)")
                     Spacer()
                 }
+                .contentShape(Rectangle())
             })
             Spacer()
         }
