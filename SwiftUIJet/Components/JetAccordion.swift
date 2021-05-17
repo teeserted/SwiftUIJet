@@ -29,7 +29,7 @@ public struct JetAccordion<HeaderContent: View, BodyContent: View>: View {
     @State private var internalExpandedViewIdx: Int? = nil
     private var expandedViewIdx: Binding<Int?>?
     
-    public init(expandedViewIdx: Binding<Int?>, data: JetAccordionItems, @ViewBuilder header: @escaping HeaderRenderer, @ViewBuilder body: @escaping BodyRenderer) {
+    public init(data: JetAccordionItems, expandedViewIdx: Binding<Int?>, @ViewBuilder header: @escaping HeaderRenderer, @ViewBuilder body: @escaping BodyRenderer) {
         self.init(expandedViewIdx: .some(expandedViewIdx), data: data, header: header, body: body)
     }
     
@@ -170,7 +170,7 @@ public extension JetAccordion where HeaderContent == EmptyView {
         self.init(data: data, header: { _,_ in EmptyView() }, body: body)
     }
     
-    init(expandedViewIdx: Binding<Int>, data: JetAccordionItems, body: @escaping BodyRenderer) {
+    init(data: JetAccordionItems, expandedViewIdx: Binding<Int>, body: @escaping BodyRenderer) {
         self.init(data: data, header: { _,_ in EmptyView() }, body: body)
     }
 }
@@ -180,7 +180,7 @@ public extension JetAccordion where BodyContent == EmptyView {
         self.init(data: data, header: header, body: { _,_ in EmptyView() })
     }
     
-    init(expandedViewIdx: Binding<Int?>, data: JetAccordionItems, header: @escaping HeaderRenderer) {
+    init(data: JetAccordionItems, expandedViewIdx: Binding<Int?>, header: @escaping HeaderRenderer) {
         self.init(expandedViewIdx: expandedViewIdx, data: data, header: header, body: { _,_ in EmptyView() })
     }
 }
@@ -190,7 +190,7 @@ public extension JetAccordion where BodyContent == EmptyView, HeaderContent == E
         self.init(data: data, header: { _,_ in EmptyView() }, body: { _,_ in EmptyView() })
     }
     
-    init(expandedViewIdx: Binding<Int?>, data: JetAccordionItems) {
+    init(data: JetAccordionItems, expandedViewIdx: Binding<Int?>) {
         self.init(expandedViewIdx: expandedViewIdx, data: data, header: { _,_ in EmptyView() }, body: { _,_ in EmptyView() })
     }
 }

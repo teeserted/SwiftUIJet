@@ -16,29 +16,27 @@ struct ContentView: View {
     @State var expandedViewIdx: Int? = 0
     var body: some View {
         VStack {
-            Text("Expanded view index: \(expandedViewIdx ?? -1)")
-            JetAccordion(data: data)
-            JetAccordion(expandedViewIdx: $expandedViewIdx, data: data)
-            JetAccordion(data: data, body: { item, isExpanded in
-                VStack {
-                    HStack {
-                        Spacer()
-                    }
-                    Text("Custom content \(item.content)")
-                }
-                .background(Color.red)
-                .padding()
-            })
+            JetAccordion(data: data, expandedViewIdx: $expandedViewIdx)
             Spacer()
-            JetAccordion(data: data, header: { item, isExpanded in
-                HStack {
-                    Image(systemName: isExpanded ? "pencil" : "scribble.variable")
-                    Text("Custom content \(item.content)")
-                    Spacer()
+            HStack {
+                Button(action: {
+                    expandedViewIdx = 0
+                }){
+                    Text("Open 1st")
                 }
-                .contentShape(Rectangle()) // Makes whole HStack tappable
-            })
-            Spacer()
+                
+                Button(action: {
+                    expandedViewIdx = 1
+                }){
+                    Text("Open 2nd")
+                }
+                
+                Button(action: {
+                    expandedViewIdx = nil
+                }, label: {
+                    Text("Close")
+                })
+            }
         }
         .padding()
     }
