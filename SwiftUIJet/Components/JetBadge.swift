@@ -15,10 +15,10 @@ public struct JetBadge<Content: View>: View {
     var font: Font = .footnote
     var content: Content
     
-    public init(padding: CGFloat = 3, backgroundColor: Color = .red, @ViewBuilder contentBuilder: () -> Content) {
+    public init(padding: CGFloat = 3, backgroundColor: Color = .red, @ViewBuilder content: () -> Content) {
         self.padding = padding
         self.backgroundColor = backgroundColor
-        self.content = contentBuilder()
+        self.content = content()
     }
     
     public var body: some View {
@@ -31,20 +31,20 @@ public struct JetBadge<Content: View>: View {
 }
 
 extension JetBadge where Content == Text {
-    public init(text: String?,
+    public init(text: String,
                 backgroundColor: Color = .red,
                 textColor: Color = .white,
                 padding: CGFloat = 3,
                 font: Font = .footnote)  {
         
         self.init() {
-            Text(text ?? "")
+            Text(text)
                 .font(font)
                 .foregroundColor(textColor)
         }
         
         self.backgroundColor = backgroundColor
-        self.text = text ?? ""
+        self.text = text
         self.textColor = textColor
         self.padding = padding
         self.font = font
@@ -53,9 +53,11 @@ extension JetBadge where Content == Text {
 
 struct JetBadge_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: 20) {
-            JetBadge {
+        VStack(spacing: 30) {
+            JetBadge(backgroundColor: .blue) {
                 Text("Custom content")
+                    .foregroundColor(.yellow)
+                    .padding()
             }
             JetBadge(text: "Just badge")
             JetBadge(text: "With padding", padding: 10)

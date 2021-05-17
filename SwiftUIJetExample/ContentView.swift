@@ -9,14 +9,17 @@ import SwiftUI
 import SwiftUIJet
 
 struct ContentView: View {
-    let testData = [
+    let data = [
         JetAccordionItem(title: "Header 1", content: "Content 1"),
         JetAccordionItem(title: "Header 2", content: "Content 2")
     ]
+    @State var expandedViewIdx: Int? = 0
     var body: some View {
         VStack {
-            JetAccordion(data: testData)
-            JetAccordion(data: testData, body: { item, isExpanded in
+            Text("Expanded view index: \(expandedViewIdx ?? -1)")
+            JetAccordion(data: data)
+            JetAccordion(expandedViewIdx: $expandedViewIdx, data: data)
+            JetAccordion(data: data, body: { item, isExpanded in
                 VStack {
                     HStack {
                         Spacer()
@@ -27,13 +30,13 @@ struct ContentView: View {
                 .padding()
             })
             Spacer()
-            JetAccordion(data: testData, header: { item, isExpanded in
+            JetAccordion(data: data, header: { item, isExpanded in
                 HStack {
                     Image(systemName: isExpanded ? "pencil" : "scribble.variable")
                     Text("Custom content \(item.content)")
                     Spacer()
                 }
-                .contentShape(Rectangle())
+                .contentShape(Rectangle()) // Makes whole HStack tappable
             })
             Spacer()
         }
