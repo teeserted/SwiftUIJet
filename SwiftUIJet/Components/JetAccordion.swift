@@ -71,9 +71,9 @@ private struct JetAccordionInternal<HeaderContent: View, BodyContent: View>: Vie
     }
     
     public var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ForEach(Array(self.data.enumerated()), id: \.offset) { idx, item in
-                VStack {
+                VStack(spacing: 0) {
                     header(item, idx)
                     Divider()
                     body(item, idx)
@@ -107,7 +107,7 @@ private struct JetAccordionInternal<HeaderContent: View, BodyContent: View>: Vie
             expanded ? nil : CGFloat(0)
         }
                 
-        return VStack {
+        return VStack(spacing: 0) {
             if (expanded) {
                 if (bodyView is EmptyView) {
                     defaultBody(item, expanded)
@@ -135,8 +135,6 @@ private struct JetAccordionInternal<HeaderContent: View, BodyContent: View>: Vie
                 .animation(.linear)
         }
         .padding()
-        .padding(.bottom, 1)
-        .background(Color.white.opacity(0.01))
     }
     
     private func defaultBody(_ item: JetAccordionItem,_ expanded: Bool) -> some View {
